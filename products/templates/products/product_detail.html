@@ -4,6 +4,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% load comment_tags %}
+{% load i18n %}
 
 
 {% block content %}
@@ -55,7 +56,7 @@
                                     </div>
                                     <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
                                             onclick="window.location.href='cart.html'">
-                                        اضافه به سبد خرید
+                                        {% trans 'add to cart' %}
                                     </button>
                                 </div>
                                 <div class="product-footer-meta mt-5 pt-5">
@@ -75,7 +76,7 @@
                                 <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
                                     <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab"
                                        data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
-                                        <span>توضیحات محصول</span>
+                                        <span>{% trans 'product description' %}</span>
                                     </a>
                                     <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
                                        href="#nav-info" role="tab" aria-selected="true">
@@ -191,13 +192,13 @@
                                                 <div class="row">
                                                     <div class="border-top py-5 w-100"></div>
                                                     <div class="col-lg-8 m-auto">
-                                                        <span class="reply-title pull-right">نظر خود را بنویسید</span>
+                                                        <span class="reply-title pull-right">{% trans 'Write your comment' %}</span>
                                                         <br>
                                                         <form action="{% url 'comment_create' product.id %}"
                                                               method="POST">
                                                             {% csrf_token %}
                                                             {{ comment_form|crispy }}
-                                                            <input type="submit" value="ارسال">
+                                                            <input type="submit" value="{% trans 'send' %}">
 
                                                         </form>
 
